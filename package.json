@@ -1,0 +1,17 @@
+{
+  "name": "kata",
+  "version": "0.0.1",
+  "description": "Practice Katas",
+  "main": "yahtzee.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-register"
+  },
+  "author": "Danny Varner",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "1.1.8",
+    "babel-register": "6.22.0",
+    "chai": "3.5.0",
+    "mocha": "3.2.0"
+  }
+}
