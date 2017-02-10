@@ -7,13 +7,20 @@ export function yahtzee(dice) {
   return new Set(dice).size == 1 ? 50 : 0
 }
 
+function calcPipFrequency(dice) {
+  var counter = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+  for(let die of dice) {
+    counter[die] += 1
+  }
+  return counter
+}
+
 export function pair(dice) {
-  for(let i=0; i<5; i++) {
-    for(let j=i+1; j<5; j++) {
-      if(dice[i]==dice[j]) {
-        return dice[i] * 2 
-      }
-    }
+  var pipFreq = calcPipFrequency(dice)
+  for(let pip in pipFreq) {
+    if(pipFreq[pip] == 2) {
+      return pipFreq[pip] * 2
+     }
   }
   return 0
 }
