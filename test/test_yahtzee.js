@@ -14,80 +14,98 @@ describe('score', ()=> {
 })
 
 describe('chance', function() {
+  const scorer = chance
   it('returns sum of all the dice', function() {
-    let actualScore = chance([1,2,2,1,1])
-    expect(actualScore).to.equal(7)
+    const roll = [1,2,2,1,1]
+    const score = scorer(roll)
+    expect(score).to.equal(7)
   })
 })
 describe('yahtzee', () => {
+  const scorer = yahtzee
   context('when found, all dice have same value', () => {
     it('return 50', () => {
-      let actualScore = yahtzee([2,2,2,2,2])
-      expect(actualScore).to.equal(50)
+      const roll = [2,2,2,2,2]
+      const score = scorer(roll)
+      expect(score).to.equal(50)
     })
   })
   context('when not found, dice have different values', () => {
     it('returns 0', () => {
-      let actualScore = yahtzee([1,2,2,2,2])
-      expect(actualScore).to.equal(0)
+      const roll = [1,2,2,2,2]
+      const score = scorer(roll)
+      expect(score).to.equal(0)
     })
   })
 })
 describe('pair', () => {
+  const scorer = pair
   context('when pair is found', () => {
     it('returns sum of pair', () => {
-      let actualScore = pair([2,2,1,4,5])
-      expect(actualScore).to.equal(4)
+      const roll = [2,2,1,4,5]
+      const score = scorer(roll)
+      expect(score).to.equal(4)
     })
     it('returns sum of biggest  of pair', () => {
-      let actualScore = pair([2,2,1,4,4])
-      expect(actualScore).to.equal(8)
+      const roll = [2,2,1,4,4]
+      const score = scorer(roll)
+      expect(score).to.equal(8)
     })
   })
   context('when not found', () => {
     it('returns 0 no pairs', () => {
-      let actualScore = pair([1,2,3,4,5])
-      expect(actualScore).to.equal(0)
+      const roll = [1,2,3,4,5]
+      const score = scorer(roll)
+      expect(score).to.equal(0)
     })
     it('returns 0 on 3-of-a-kind', () => {
-      let actualScore = pair([2,3,4,4,4])
-      expect(actualScore).to.equal(0)
+      const roll = [2,3,4,4,4]
+      const score = scorer(roll)
+      expect(score).to.equal(0)
     })
   })
 })
 describe('three-of-a-kind', () => {
+  const scorer = threeOfKind
   context('when found', () => {
     it('returns sum', () => {
-      let actualScore = threeOfKind([2,2,1,2,5])
-      expect(actualScore).to.equal(6)
+      const roll = [2,2,1,2,5]
+      const score = scorer(roll)
+      expect(score).to.equal(6)
     })
   })
   context('when not found', () => {
     it('returns 0 on no 3-of-a-kind', () => {
-      let actualScore = threeOfKind([1,2,3,4,5])
-      expect(actualScore).to.equal(0)
+      const roll = [1,2,3,4,5]
+      const score = scorer(roll)
+      expect(score).to.equal(0)
     })
     it('returns 0 on 4-of-a-kind', () => {
-      let actualScore = threeOfKind([4,3,4,4,4])
-      expect(actualScore).to.equal(0)
+      const roll = [4,3,4,4,4]
+      const score = scorer(roll)
+      expect(score).to.equal(0)
     })
   })
 })
 describe('full house', () => {
+  const scorer = fullHouse 
   context('when found', () => {
     it('returns sum of all dice', () => {
-      let actualScore = fullHouse([2,2,5,5,5])
-      expect(actualScore).to.equal(19)
+      const roll = [2,2,5,5,5]
+      const score = scorer(roll)
+      expect(score).to.equal(19)
     })
   })
   context('when not found', () => {
     it('returns 0 on just 3-of-a-kind', () => {
-      let actualScore = fullHouse([2,2,2,4,5])
-      expect(actualScore).to.equal(0)
+      const roll = [2,2,2,4,5]
+      const score = scorer(roll)
+      expect(score).to.equal(0)
     })
     it('returns 0 on just pair', () => {
-      let actualScore = fullHouse([4,3,1,2,4])
-      expect(actualScore).to.equal(0)
+      const roll = [4,3,1,2,4]
+      const score = scorer(roll)
+      expect(score).to.equal(0)
     })
   })
 })
