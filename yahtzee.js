@@ -17,8 +17,11 @@ function calcPipFrequency(dice) {
 
 export function pair(dice) {
   var pipFreq = calcPipFrequency(dice)
+  let pairs = Object.keys(pipFreq).filter(pip=>pipFreq[pip] >= 2)
+  return pairs.length > 0 ? Math.max(...pairs) * 2 : 0
+
   for(let pip in pipFreq) {
-    if(pipFreq[pip] == 2) {
+    if(pipFreq[pip] >= 2) {
       return pipFreq[pip] * 2
      }
   }

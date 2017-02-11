@@ -39,6 +39,10 @@ describe('pair', () => {
       let actualScore = pair([2,2,1,4,5])
       expect(actualScore).to.equal(4)
     })
+    it('returns sum of biggest  of pair', () => {
+      let actualScore = pair([2,2,1,4,4])
+      expect(actualScore).to.equal(8)
+    })
   })
   context('when pair is not found', () => {
     it('returns 0', () => {
