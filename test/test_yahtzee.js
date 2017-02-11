@@ -14,19 +14,19 @@ describe('score', ()=> {
 })
 
 describe('chance', function() {
-  it('should return sum of all the dice', function() {
+  it('returns sum of all the dice', function() {
     let actualScore = chance([1,2,2,1,1])
     expect(actualScore).to.equal(7)
   })
 })
 describe('yahtzee', () => {
-  context('when all dice have same value', () => {
+  context('when found, all dice have same value', () => {
     it('return 50', () => {
       let actualScore = yahtzee([2,2,2,2,2])
       expect(actualScore).to.equal(50)
     })
   })
-  context('when dice have different values', () => {
+  context('when not found, dice have different values', () => {
     it('returns 0', () => {
       let actualScore = yahtzee([1,2,2,2,2])
       expect(actualScore).to.equal(0)
@@ -43,32 +43,32 @@ describe('pair', () => {
       let actualScore = pair([2,2,1,4,4])
       expect(actualScore).to.equal(8)
     })
-    it('returns zero if it is a 3-of-a-kind', () => {
-      let actualScore = pair([2,3,4,4,4])
+  })
+  context('when not found', () => {
+    it('returns 0 no pairs', () => {
+      let actualScore = pair([1,2,3,4,5])
       expect(actualScore).to.equal(0)
     })
-  })
-  context('when pair is not found', () => {
-    it('returns 0', () => {
-      let actualScore = pair([1,2,3,4,5])
+    it('returns 0 on 3-of-a-kind', () => {
+      let actualScore = pair([2,3,4,4,4])
       expect(actualScore).to.equal(0)
     })
   })
 })
 describe('three-of-a-kind', () => {
-  context('when three-of-kind is found', () => {
-    it('returns sum of three-of-kind', () => {
+  context('when found', () => {
+    it('returns sum', () => {
       let actualScore = threeOfKind([2,2,1,2,5])
       expect(actualScore).to.equal(6)
     })
-    it('returns zero if it is a 4-of-a-kind', () => {
-      let actualScore = threeOfKind([4,3,4,4,4])
+  })
+  context('when not found', () => {
+    it('returns 0 on no 3-of-a-kind', () => {
+      let actualScore = threeOfKind([1,2,3,4,5])
       expect(actualScore).to.equal(0)
     })
-  })
-  context('when is not found', () => {
-    it('returns 0', () => {
-      let actualScore = threeOfKind([1,2,3,4,5])
+    it('returns 0 on 4-of-a-kind', () => {
+      let actualScore = threeOfKind([4,3,4,4,4])
       expect(actualScore).to.equal(0)
     })
   })
