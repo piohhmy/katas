@@ -18,6 +18,11 @@ export function threeOfKind(dice) {
   return triples.length > 0 ? triples[0]*3 : 0
 }
 
+export function fullHouse(dice) {
+  let pairScore = pair(dice)
+  let tripleScore = threeOfKind(dice)
+  return pairScore && tripleScore ? pairScore+tripleScore : 0
+}
 export function score(roll, scorer) {
   if(roll.length != 5)
     throw Error("5 dice not rolled")
