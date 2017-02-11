@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {chance, yahtzee, pair, score} from '../yahtzee'
+import {chance, yahtzee, pair, threeOfKind, score} from '../yahtzee'
 
 describe('score', ()=> {
   it('should thow exception if less than 5 dice are rolled', () => {
@@ -52,7 +52,24 @@ describe('pair', () => {
     it('returns 0', () => {
       let actualScore = pair([1,2,3,4,5])
       expect(actualScore).to.equal(0)
-
+    })
+  })
+})
+describe('three-of-a-kind', () => {
+  context('when three-of-kind is found', () => {
+    it('returns sum of three-of-kind', () => {
+      let actualScore = threeOfKind([2,2,1,2,5])
+      expect(actualScore).to.equal(6)
+    })
+    it('returns zero if it is a 4-of-a-kind', () => {
+      let actualScore = threeOfKind([4,3,4,4,4])
+      expect(actualScore).to.equal(0)
+    })
+  })
+  context('when is not found', () => {
+    it('returns 0', () => {
+      let actualScore = threeOfKind([1,2,3,4,5])
+      expect(actualScore).to.equal(0)
     })
   })
 })
