@@ -43,6 +43,10 @@ describe('pair', () => {
       let actualScore = pair([2,2,1,4,4])
       expect(actualScore).to.equal(8)
     })
+    it('returns zero if it is a 3-of-a-kind', () => {
+      let actualScore = pair([2,3,4,4,4])
+      expect(actualScore).to.equal(0)
+    })
   })
   context('when pair is not found', () => {
     it('returns 0', () => {
